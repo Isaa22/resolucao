@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyRescue - Solução para Aulas Perdidas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-life-ring"></i> StudyRescue</h1>
+            <p>Sua solução quando o professor falta</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home"><i class="fas fa-home"></i> Início</a></li>
+                <li><a href="#search"><i class="fas fa-search"></i> Pesquisar Conteúdo</a></li>
+                <li><a href="#resources"><i class="fas fa-book"></i> Recursos</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> Sobre</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Professor faltou hoje?</h2>
+                <p>Não perca o ritmo de estudos! Pesquise o conteúdo que seria dado na aula e receba materiais personalizados.</p>
+                <a href="#search" class="btn">Começar Agora</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Estudantes aprendendo">
+            </div>
+        </section>
+
+        <section id="search">
+            <h2><i class="fas fa-search"></i> Pesquise o Conteúdo</h2>
+            <div class="search-box">
+                <input type="text" id="topic-input" placeholder="Ex: Equações do 2º grau, Segunda Guerra Mundial...">
+                <select id="subject-select">
+                    <option value="">Qualquer matéria</option>
+                    <option value="matematica">Matemática</option>
+                    <option value="portugues">Português</option>
+                    <option value="historia">História</option>
+                    <option value="geografia">Geografia</option>
+                    <option value="ciencias">Ciências</option>
+                    <option value="fisica">Física</option>
+                    <option value="quimica">Química</option>
+                    <option value="biologia">Biologia</option>
+                    <option value="ingles">Inglês</option>
+                    <option value="filosofia">Filosofia</option>
+                    <option value="sociologia">Sociologia</option>
+                </select>
+                <button id="search-btn" class="btn"><i class="fas fa-search"></i> Gerar Aula</button>
+            </div>
+        </section>
+
+        <section id="results" class="hidden">
+            <div class="loader">
+                <div class="spinner"></div>
+                <p>Gerando sua aula personalizada...</p>
+            </div>
+            <div class="lesson-content hidden">
+                <h3 id="lesson-title"></h3>
+                <div id="lesson-materials"></div>
+                <div class="actions">
+                    <button id="save-btn" class="btn-outline"><i class="fas fa-save"></i> Salvar Aula</button>
+                    <button id="print-btn" class="btn-outline"><i class="fas fa-print"></i> Imprimir</button>
+                    <button id="new-search-btn" class="btn-outline"><i class="fas fa-redo"></i> Nova Pesquisa</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <h2><i class="fas fa-star"></i> Como Funciona</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Pesquise</h3>
+                    <p>Digite o tema que seria abordado na aula e selecione a matéria.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Geramos</h3>
+                    <p>Nosso sistema cria uma aula completa com explicações e exercícios.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Estude</h3>
+                    <p>Acesse materiais de qualidade mesmo sem o professor.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 StudyRescue - Todos os direitos reservados</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
