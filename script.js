@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const printBtn = document.getElementById('print-btn');
     const newSearchBtn = document.getElementById('new-search-btn');
     
-    // Dados de exemplo (simulando uma API)
+    // Dados de exemplo melhorados
     const sampleLessons = {
         "matematica": {
-            "Equações do 2º grau": {
+            "equações do 2º grau": {
                 "title": "Aula sobre Equações do 2º Grau",
                 "content": `
                     <h4>O que são equações do 2º grau?</h4>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </ol>
                 `
             },
-            "Teorema de Pitágoras": {
+            "teorema de pitágoras": {
                 "title": "Aula sobre Teorema de Pitágoras",
                 "content": `
                     <h4>O que é o Teorema de Pitágoras?</h4>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         },
         "historia": {
-            "Segunda Guerra Mundial": {
+            "segunda guerra mundial": {
                 "title": "Aula sobre Segunda Guerra Mundial",
                 "content": `
                     <h4>Contexto histórico</h4>
@@ -115,26 +115,45 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Função para gerar aula
+    // Função para gerar aula - CORRIGIDA
     function generateLesson(topic, subject) {
         // Simular tempo de carregamento
         setTimeout(() => {
             loader.classList.add('hidden');
             
+            // Normalizar o tópico para minúsculas para comparação
+            const normalizedTopic = topic.toLowerCase();
+            
             // Verificar se temos dados para o tópico e matéria
-            if (sampleLessons[subject] && sampleLessons[subject][topic]) {
-                const lesson = sampleLessons[subject][topic];
+            if (subject && sampleLessons[subject] && sampleLessons[subject][normalizedTopic]) {
+                // Caso tenha conteúdo específico
+                const lesson = sampleLessons[subject][normalizedTopic];
                 lessonTitle.textContent = lesson.title;
                 lessonMaterials.innerHTML = lesson.content;
+            } else if (subject && sampleLessons[subject]) {
+                // Caso tenha a matéria mas não o tópico específico
+                const firstLessonKey = Object.keys(sampleLessons[subject])[0];
+                const lesson = sampleLessons[subject][firstLessonKey];
+                lessonTitle.textContent = `Aula sobre ${topic} (${getSubjectName(subject)})`;
+                lessonMaterials.innerHTML = `
+                    <p>Não temos uma aula específica sobre "${topic}" em ${getSubjectName(subject)}, mas aqui está um material relacionado:</p>
+                    ${lesson.content}
+                    <h4>Atividades sobre ${topic}</h4>
+                    <ol>
+                        <li>Pesquise em seu livro didático sobre ${topic}.</li>
+                        <li>Faça um resumo com os principais conceitos.</li>
+                        <li>Discuta com colegas como ${topic} se relaciona com ${lesson.title}.</li>
+                    </ol>
+                `;
             } else {
-                // Se não tiver dados específicos, mostrar um conteúdo genérico
+                // Caso genérico (sem matéria específica ou tópico desconhecido)
                 lessonTitle.textContent = `Aula sobre ${topic}`;
                 lessonMaterials.innerHTML = `
                     <h4>Introdução</h4>
                     <p>Este é um material gerado automaticamente sobre o tema "${topic}".</p>
                     
                     <h4>Conceitos Básicos</h4>
-                    <p>${topic} é um tópico importante em ${getSubjectName(subject)} que aborda...</p>
+                    <p>${topic} é um tópico importante que aborda...</p>
                     
                     <h4>Exemplos</h4>
                     <ul>
@@ -155,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             lessonContent.classList.remove('hidden');
-        }, 2000);
+        }, 1500);
     }
     
     // Função auxiliar para obter nome completo da matéria
@@ -209,6 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
     newSearchBtn.addEventListener('click', function() {
         lessonContent.classList.add('hidden');
         topicInput.value = '';
+        subjectSelect.value = '';
         topicInput.focus();
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
